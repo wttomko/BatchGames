@@ -4,8 +4,8 @@ setlocal enabledelayedexpansion
 ::ARGUMENTS
 :: 1 1st player in the swap
 :: 2 1st players card number to swap
-:: 3 2nd player in the swap
-:: 4 2nd players card number to swap
+:: 3 2nd player in the swap (make 0 to swap with the 'new card')
+:: 4 2nd players card number to swap (make 0 to swap with the 'new card')
 :: 5 path to .bat files
 
 set /a p1=%~1
@@ -26,20 +26,35 @@ set "tempCard.power=!player%p1%.card%c1%.power!"
 
 :: PLAYER 1 == PLAYER 2
 
-echo set "player%p1%.card%c1%.name=!player%p2%.card%c2%.name!" >>%gameLog%
-echo set "player%p1%.card%c1%.id=!player%p2%.card%c2%.id!" >>%gameLog%
-echo set "player%p1%.card%c1%.suit=!player%p2%.card%c2%.suit!" >>%gameLog%
-echo set /a player%p1%.card%c1%.value=!player%p2%.card%c2%.value! >>%gameLog%
-echo set "player%p1%.card%c1%.power=!player%p2%.card%c2%.power!" >>%gameLog%
-echo. >>%gameLog%
+if %p2%==0 (
+    echo set "player%p1%.card%c1%.name=!newCard.name!" >>%gameLog%
+    echo set "player%p1%.card%c1%.id=!newCard.id!" >>%gameLog%
+    echo set "player%p1%.card%c1%.suit=!newCard.suit!" >>%gameLog%
+    echo set /a player%p1%.card%c1%.value=!newCard.value! >>%gameLog%
+    echo set "player%p1%.card%c1%.power=!newCard.power!" >>%gameLog%
 
-::PLAYER 2 == TEMP
+    echo set "newCard.name=!tempCard.name!" >>%gameLog%
+    echo set "newCard.id=!tempCard.id!" >>%gameLog%
+    echo set "newCard.suit=!tempCard.suit!" >>%gameLog%
+    echo set /a newCard.value=!tempCard.value! >>%gameLog%
+    echo set "newCard.power=!tempCard.power!" >>%gameLog%
 
-echo set "player%p2%.card%c2%.name=!tempCard.name!" >>%gameLog%
-echo set "player%p2%.card%c2%.id=!tempCard.id!" >>%gameLog%
-echo set "player%p2%.card%c2%.suit=!tempCard.suit!" >>%gameLog%
-echo set /a player%p2%.card%c2%.value=!tempCard.value! >>%gameLog%
-echo set "player%p2%.card%c2%.power=!tempCard.power!" >>%gameLog%
-echo. >>%gameLog%
+) else (
+    echo set "player%p1%.card%c1%.name=!player%p2%.card%c2%.name!" >>%gameLog%
+    echo set "player%p1%.card%c1%.id=!player%p2%.card%c2%.id!" >>%gameLog%
+    echo set "player%p1%.card%c1%.suit=!player%p2%.card%c2%.suit!" >>%gameLog%
+    echo set /a player%p1%.card%c1%.value=!player%p2%.card%c2%.value! >>%gameLog%
+    echo set "player%p1%.card%c1%.power=!player%p2%.card%c2%.power!" >>%gameLog%
+    echo. >>%gameLog%
+
+    ::PLAYER 2 == TEMP
+
+    echo set "player%p2%.card%c2%.name=!tempCard.name!" >>%gameLog%
+    echo set "player%p2%.card%c2%.id=!tempCard.id!" >>%gameLog%
+    echo set "player%p2%.card%c2%.suit=!tempCard.suit!" >>%gameLog%
+    echo set /a player%p2%.card%c2%.value=!tempCard.value! >>%gameLog%
+    echo set "player%p2%.card%c2%.power=!tempCard.power!" >>%gameLog%
+    echo. >>%gameLog%
+)
 
 exit /b 0
