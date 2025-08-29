@@ -3,16 +3,18 @@ setlocal enabledelayedexpansion
 
 ::ARGUMENTS
 :: 1 1st player in the swap
-:: 2 2nd player in swap
-:: 3 1st players card number to swap
+:: 2 1st players card number to swap
+:: 3 2nd player in the swap
 :: 4 2nd players card number to swap
-:: 3 gameLog
+:: 5 path to .bat files
 
 set /a p1=%~1
-set /a p2=%~2
-set /a c1=%~3
+set /a p2=%~3
+set /a c1=%~2
 set /a c2=%~4
-set "gameLog=%~5"
+set "gameLog=%~5\gameLog.bat"
+
+call %gameLog%
 
 ::TEMP CARD == PLAYER 1
 

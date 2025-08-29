@@ -12,7 +12,7 @@ break>%gameLog%
 echo @echo off>>%gameLog%
 echo.>>%gameLog%
 
-echo set /a discardCounter=%discardCounter% >>%gameLog%
+echo set /a discardPile.totalCards=%discardPile.totalCards% >>%gameLog%
 echo set /a deckCounter=%deckCounter% >>%gameLog%
 echo set /a totalPlayers=%totalPlayers% >>%gameLog%
 echo set /a deck.totalCards=%deck.totalCards% >>%gameLog%

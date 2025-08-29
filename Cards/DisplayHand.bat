@@ -12,6 +12,8 @@ set "gameLog=%~3\gameLog.bat"
 call %gameLog%
 set /a total=!player%player%.cardAmount!
 
+echo Player %player%^:
+
 if /i "%style%"=="Name" (
     for /l %%a in (1,1,%total%) do echo [%%a] !player%player%.card%%a.name!
 )
@@ -19,6 +21,8 @@ if /i "%style%"=="Name" (
 if /i "%style%"=="Short" (
     for /l %%a in (1,2,%total%) do call :short %%a
 )
+
+echo.
 
 exit /b 0
 

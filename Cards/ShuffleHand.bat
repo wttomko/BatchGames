@@ -28,6 +28,7 @@ exit /b 0
 
 :Shuffle
     set /a c=%~1
+
 :loop
 
 set /a count=%random% %% %maxNum%+1

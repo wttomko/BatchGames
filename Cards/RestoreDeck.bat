@@ -29,7 +29,7 @@ for /l %%a in (%startingPoint%,1,%deck.totalCards%) do (
     set "card!counter!.power=!card%%a.power!"
 )
 
-for /l %%a in (1,1,%discardCounter%) do (
+for /l %%a in (1,1,%discardPile.totalCards%) do (
     set /a counter+=1
     set "card!counter!.name=!discard.card%%a.name!"
     set "card!counter!.id=!discard.card%%a.id!"
@@ -48,7 +48,7 @@ del %ran%AlreadyChosen.txt
 break>%discardPile%
 echo @echo off >>%discardPile%
 echo. >>%discardPile%
-echo set /a discardCounter=0 >>%gameLog%
+echo set /a discardPile.totalCards=0 >>%gameLog%
 echo set /a deckCounter=0 >>%gameLog%
 
 call %~dp0RefreshGameLog.bat %path%

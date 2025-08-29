@@ -65,7 +65,7 @@ echo ========================
 ::START OF CARD ASSEMBLE - LOOP THROUGH SUITS, THEN IDS
 
 for %%a in (Hearts Clubs Spades Diamonds) do call :Create "%%a"
-echo set /a discardCounter=0 >>%path%\gameLog.bat
+echo set /a discardPile.totalCards=0 >>%path%\gameLog.bat
 echo set /a deck.totalCards=%maxNum% >>%path%\gameLog.bat
 del %path%\%ran%alreadyChosen.txt
 

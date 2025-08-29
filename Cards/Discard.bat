@@ -13,10 +13,10 @@ call %gameLog%
 
 set /a cardAmount=!player%playerNumber%.cardAmount!
 
-set /a disCounter=%discardCounter%
+set /a disCounter=%discardPile.totalCards%
 set "discardPile=%~3\discardPile.bat"
 set /a disCounter+=1
-echo set /a discardCounter+=1 >>%gameLog%
+echo set /a discardPile.totalCards+=1 >>%gameLog%
 echo. >>%gameLog%
 
 echo Player %playerNumber% is discarding card %cardNumber%.
