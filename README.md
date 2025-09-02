@@ -50,4 +50,16 @@
 
         *potential update.. have the deck counter be created outside this script, to potential deal mid game? the script now sets the deck counter to 0 **
 
-    
+    -- Discard .bat ------------------------------------------------------------------
+    ----------------------------------------------------------------------------------
+        Arguments
+            1. Number of the player that is discarding
+            2. Card number they are discarding
+            3. Path to .bat files
+
+        Function
+            Remove the chosen card from the player and add it to the discard pile
+            Additionally, take the last card in the players hand, and have that card 
+            take the place of the chosen card (to ensure that player X's card #Y is not null)
+
+    -- Display
